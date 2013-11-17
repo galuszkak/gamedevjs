@@ -1,0 +1,22 @@
+{
+  "name": "gamedevjs",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/galuszkak/gamedevjs.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/galuszkak/gamedevjs/issues"
+  },
+  "homepage": "https://github.com/galuszkak/gamedevjs",
+  "dependencies": {
+    "grunt": "~0.4.1"
+  }
+}
