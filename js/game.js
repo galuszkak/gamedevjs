@@ -12,6 +12,8 @@ function preload() {
 }
 
 function create() {
+    game.plugins.add(plugin);
+
     player = game.add.sprite(32, 32, 'dude');
     player.body.bounce.y = 0.2;
     player.body.collideWorldBounds = true;
@@ -86,3 +88,22 @@ function render() {
         player.x = 1;
     }
 }
+
+var plugin = new Phaser.Plugin(game);
+plugin.update = function () {
+    player._x = player.x;
+    player._y = player.y;
+    player._angle = player.angle;
+
+    // move
+
+    // rotate
+
+    // move
+};
+
+plugin.postRender = function () {
+    player.x = player._x;
+    player.y = player._y;
+    player.angle = player._angle;
+};
