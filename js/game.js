@@ -1,37 +1,29 @@
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'game', {
-    preload: preload,
-    create: create,
-    render: render,
-    update: update
-});
+var game = document.getElementById("game"),
+    stage = new PIXI.Stage(0x000000),
+    renderer = PIXI.autoDetectRenderer(game.clientWidth, game.clientHeight),
+    playerTexture = PIXI.Texture.fromImage("assets/player.png"),
+    planetTexture = PIXI.Texture.fromImage("assets/planet.png"),
+    player = new PIXI.Sprite(playerTexture),
+    planet = new PIXI.Sprite(planetTexture);
 
-var planet, player1, player2, cursors, jumpButton;
+game.appendChild(renderer.view);
 
-function preload() {
-    game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
-}
+planet.anchor.x = 0.5;
+planet.anchor.y = 0.5;
+planet.position.x = 400;
+planet.position.y = 300;
 
-function create() {
-    planet = new Phaser.Circle(game.world.centerX, game.world.centerY, 256);
+player.anchor.x = 0.5;
+player.anchor.y = 0.5;
+player.position.x = 100;
+player.position.y = 100;
 
-    player1 = game.add.sprite(32, 32, 'dude');
-    player1.body.bounce.y = 0.2;
-    player1.body.collideWorldBounds = true;
-    player1.body.setSize(16, 32, 8, 16);
+stage.addChild(planet);
+stage.addChild(player);
 
-    player1.animations.add('left', [0, 1, 2, 3], 10, true);
-    player1.animations.add('turn', [4], 20, true);
-    player1.animations.add('right', [5, 6, 7, 8], 10, true);
+requestAnimFrame(animate);
 
-    cursors = game.input.keyboard.createCursorKeys();
-    jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-}
-
-function render() {
-    game.debug.renderCircle(planet,'#cfffff');
-    game.debug.renderSpriteBody(player1);
-}
-
-function update () {
-    game.physics.accelerateToObject(player1, planet, 60, 200, 200);
+function animate() {
+    requestAnimFrame(animate);
+    renderer.render(stage);
 }
