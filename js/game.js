@@ -45,12 +45,32 @@ function update () {
 
     player1.body.angularVelocity = 0;
 
+    // wokół własnej osi
+//    if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
+//    {
+//        player1.body.angularVelocity = -200;
+//    }
+//    else if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
+//    {
+//        player1.body.angularVelocity = 200;
+//    }
+
+    //chodzenie po planszy
     if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
     {
-        player1.body.angularVelocity = -200;
+        player1.body.velocity.x = -200;
     }
     else if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
     {
-        player1.body.angularVelocity = 200;
+        player1.body.velocity.x = 200;
+    }
+
+    if (game.input.keyboard.isDown(Phaser.Keyboard.UP))
+    {
+        player1.body.velocity.y = -200;
+    }
+    else if (game.input.keyboard.isDown(Phaser.Keyboard.DOWN))
+    {
+        player1.body.velocity.y = 200;
     }
 }
