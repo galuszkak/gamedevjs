@@ -12,7 +12,9 @@ function preload() {
 }
 
 function create() {
-    planet = new Phaser.Circle(game.world.centerX, game.world.centerY, 256);
+    planet = new Phaser.Circle(game.world.centerX, game.world.centerY, 100);
+    planet.r = planet.diameter/2;
+
 
     player1 = game.add.sprite(32, 32, 'dude');
     player1.body.bounce.y = 0.2;
@@ -28,10 +30,26 @@ function create() {
 }
 
 function render() {
-    game.debug.renderCircle(planet,'#cfffff');
-    game.debug.renderSpriteBody(player1);
+    game.debug.renderCircle(planet, "#FAFAFA")
 }
 
 function update () {
-    game.physics.accelerateToObject(player1, planet, 60, 200, 200);
+    if(planet.distance(player1) >=100){
+        game.physics.accelerateToObject(player1, planet, 60, 200, 200);
+    }
+    else{
+        player1.body.velocity.x = 0;
+        player1.body.velocity.y = 0;
+    }
+
+    player1.body.angularVelocity = 0;
+
+    if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
+    {
+        player1.body.angularVelocity = -200;
+    }
+    else if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
+    {
+        player1.body.angularVelocity = 200;
+    }
 }
