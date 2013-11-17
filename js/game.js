@@ -38,20 +38,35 @@ function render() {
 function update () {
     if(planet.distance(player1) >=100){
         game.physics.accelerateToObject(player1, planet, 60, 200, 200);
+        move_dude()
     }
     else{
         player1.body.velocity.x = 0;
         player1.body.velocity.y = 0;
+        game.physics.velocityFromAngle(player1.angle, 200, player1.body.velocity);
+
     }
 
     player1.body.angularVelocity = 0;
 
+
+}
+
+function move_dude(){
     if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
         game.physics.velocityFromAngle(player1.angle, 200, player1.body.velocity);
 
     }
     if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
         game.physics.velocityFromAngle(player1.angle-180, 200, player1.body.velocity);
+
+    }
+    if (game.input.keyboard.isDown(Phaser.Keyboard.UP)){
+        game.physics.velocityFromAngle(player1.angle-90, 200, player1.body.velocity);
+
+    }
+    if (game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+        game.physics.velocityFromAngle(player1.angle+90, 200, player1.body.velocity);
 
     }
 }
