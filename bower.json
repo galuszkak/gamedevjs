@@ -1,0 +1,19 @@
+{
+  "name": "gamedevjs",
+  "version": "0.0.0",
+  "homepage": "https://github.com/galuszkak/gamedevjs",
+  "authors": [
+    "Kuba Kuźma <kuba@jah.pl>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "phaser": "~1.1.2"
+  }
+}
